@@ -21,16 +21,15 @@ from skimage import color
 from webcolors import rgb_to_name
 from skimage import novice
 from search_image import getColor,replaceColor,getSquare,getCenter,getGreen,getBlack
-    
-# Convert to float: Important for subtraction later which won't work with uint8
-orig = io.imread('/Users/benharris/Documents/Projects/SeaLions/images/0.jpg')
+
+#Read in image, replace colors with black then converts to gray. Allows find edges to work better.
+orig = io.imread('/Users/benharris/Documents/Projects/SeaLions/images/5.jpg')
 start_time = time.time()
 orig2 = replaceColor(orig.copy())
 print("--- %s seconds ---" % (time.time() - start_time))
 gray = rgb2gray(orig2)
-#image = io.imread('/Users/benharris/Documents/Projects/SeaLions/images/4.jpg',flatten=True)
-#image = gaussian_filter(image, 1)
 
+#Find Edges
 start_time = time.time()
 edges3 = feature.canny(gray, sigma=1,low_threshold=.1,high_threshold=.15)
 print("--- %s seconds ---" % (time.time() - start_time))
@@ -38,12 +37,14 @@ print("--- %s seconds ---" % (time.time() - start_time))
 io.imshow(edges3)
 io.show()
 
+#Find Contours
 start_time = time.time()
 contours = find_contours(edges3, .7, fully_connected='high', positive_orientation='low')
 print("--- %s seconds ---" % (time.time() - start_time))
 fig, ax = plt.subplots()
 ax.imshow(orig)
 
+#Filter contours by color and shape. Plot Image with squares
 for n, contour in enumerate(contours):
     x_c,y_c = getCenter(contour)
     boolean = getBlack(orig2[y_c,x_c])
