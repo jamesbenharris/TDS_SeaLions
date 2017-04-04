@@ -12,18 +12,18 @@ def getColor(np.ndarray colors):
     cdef int r = colors[0]
     cdef int g = colors[1]
     cdef int b = colors[2]
-    if (r>150 and g<80 and b<80):
-        return True,'Red'
-    elif (r<40 and g<70 and b>150):
-        return True,'Blue'
-    elif (r>70 and r<100 and g<60 and g>30 and b<20):
-        return True,'Brown'
+    if (r>71 and r<110 and g<65 and g>20 and b<30):
+        return True,2,2
+    elif (r>150 and g<80 and b<80):
+        return True,0,3
+    elif (r<40 and g<70 and b>130):
+        return True,3,2
     elif (r<60 and g>150 and b<80):
-        return True,'Green'    
+        return True,4,.75
     elif (r>220 and g<50 and b>220):
-        return True,'Pink'
+        return True,1,3
     else:
-        return False,'Unknown'
+        return False,'Unknown',0
 
 def replaceColor(np.ndarray tempImage):
     cdef int x = tempImage.shape[1]   
@@ -31,16 +31,18 @@ def replaceColor(np.ndarray tempImage):
     cdef int w, h
     for w in range(x):
         for h in range(y):
-            truth, color = getColor(tempImage[h,w])
+            truth = getColor(tempImage[h,w])[0]
             if (truth):
+                tempImage[h,w] = [255,255,255]
+            else:
                 tempImage[h,w] = 0
     return tempImage
 
-def getSquare(np.ndarray tempContour):
-    cdef int x = min(tempContour[:, 1])-20
-    cdef int y = min(tempContour[:, 0])-20
-    cdef int w = (max(tempContour[:, 1])-min(tempContour[:, 1]))+20
-    cdef int h = (max(tempContour[:, 0])-min(tempContour[:, 0]))+20
+def getSquare(np.ndarray tempContour,scale):
+    cdef int w = 45*scale
+    cdef int h = 45*scale
+    cdef int x = np.median(tempContour[:, 1])-w/2
+    cdef int y = np.median(tempContour[:, 0])-h/2
     return x,y,h,w
 
 def getCenter(np.ndarray tempContour):
@@ -57,11 +59,11 @@ def getGreen(np.ndarray tempImage):
     else:
         return False
     
-def getBlack(np.ndarray tempImage):
+def getBool(np.ndarray tempImage):
     cdef int r = tempImage[0]
     cdef int g = tempImage[1]
     cdef int b = tempImage[2]
-    if(r==0 and g==0 and b==0):
+    if(r==255 and g==255 and b==255):
         return True
     else:
         return False
