@@ -1552,7 +1552,6 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   int __pyx_t_2;
   int __pyx_t_3;
   int __pyx_t_4;
-  int __pyx_t_5;
   __Pyx_RefNannySetupContext("getColor", 0);
 
   /* "search_image.pyx":12
@@ -1573,7 +1572,7 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
  *     cdef int r = colors[0]
  *     cdef int g = colors[1]             # <<<<<<<<<<<<<<
  *     cdef int b = colors[2]
- *     if (r > 200 and g < 50 and b < 50):
+ *     if (r>150 and g<80 and b<80):
  */
   __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_colors), 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1585,7 +1584,7 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
  *     cdef int r = colors[0]
  *     cdef int g = colors[1]
  *     cdef int b = colors[2]             # <<<<<<<<<<<<<<
- *     if (r > 200 and g < 50 and b < 50):
+ *     if (r>150 and g<80 and b<80):
  *         return True,'Red'
  */
   __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_colors), 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
@@ -1597,32 +1596,32 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   /* "search_image.pyx":15
  *     cdef int g = colors[1]
  *     cdef int b = colors[2]
- *     if (r > 200 and g < 50 and b < 50):             # <<<<<<<<<<<<<<
+ *     if (r>150 and g<80 and b<80):             # <<<<<<<<<<<<<<
  *         return True,'Red'
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  */
-  __pyx_t_4 = ((__pyx_v_r > 0xC8) != 0);
+  __pyx_t_4 = ((__pyx_v_r > 0x96) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g < 50) != 0);
+  __pyx_t_4 = ((__pyx_v_g < 80) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b < 50) != 0);
+  __pyx_t_4 = ((__pyx_v_b < 80) != 0);
   __pyx_t_3 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_3) {
 
     /* "search_image.pyx":16
  *     cdef int b = colors[2]
- *     if (r > 200 and g < 50 and b < 50):
+ *     if (r>150 and g<80 and b<80):
  *         return True,'Red'             # <<<<<<<<<<<<<<
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  *         return True,'Blue'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -1633,41 +1632,41 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
     /* "search_image.pyx":15
  *     cdef int g = colors[1]
  *     cdef int b = colors[2]
- *     if (r > 200 and g < 50 and b < 50):             # <<<<<<<<<<<<<<
+ *     if (r>150 and g<80 and b<80):             # <<<<<<<<<<<<<<
  *         return True,'Red'
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  */
   }
 
   /* "search_image.pyx":17
- *     if (r > 200 and g < 50 and b < 50):
+ *     if (r>150 and g<80 and b<80):
  *         return True,'Red'
- *     elif (r < 100 and  100 < g and b < 100):             # <<<<<<<<<<<<<<
+ *     elif (r<40 and g<70 and b>150):             # <<<<<<<<<<<<<<
  *         return True,'Blue'
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  */
-  __pyx_t_4 = ((__pyx_v_r < 0x64) != 0);
+  __pyx_t_4 = ((__pyx_v_r < 40) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_4 = ((0x64 < __pyx_v_g) != 0);
+  __pyx_t_4 = ((__pyx_v_g < 70) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b < 0x64) != 0);
+  __pyx_t_4 = ((__pyx_v_b > 0x96) != 0);
   __pyx_t_3 = __pyx_t_4;
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_3) {
 
     /* "search_image.pyx":18
  *         return True,'Red'
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  *         return True,'Blue'             # <<<<<<<<<<<<<<
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  *         return True,'Brown'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -1676,43 +1675,55 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
     goto __pyx_L0;
 
     /* "search_image.pyx":17
- *     if (r > 200 and g < 50 and b < 50):
+ *     if (r>150 and g<80 and b<80):
  *         return True,'Red'
- *     elif (r < 100 and  100 < g and b < 100):             # <<<<<<<<<<<<<<
+ *     elif (r<40 and g<70 and b>150):             # <<<<<<<<<<<<<<
  *         return True,'Blue'
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  */
   }
 
   /* "search_image.pyx":19
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  *         return True,'Blue'
- *     elif (r < 150 and g < 50 and b < 100):             # <<<<<<<<<<<<<<
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):             # <<<<<<<<<<<<<<
  *         return True,'Brown'
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  */
-  __pyx_t_4 = ((__pyx_v_r < 0x96) != 0);
+  __pyx_t_4 = ((__pyx_v_r > 70) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L10_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g < 50) != 0);
+  __pyx_t_4 = ((__pyx_v_r < 0x64) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L10_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b < 0x64) != 0);
+  __pyx_t_4 = ((__pyx_v_g < 60) != 0);
+  if (__pyx_t_4) {
+  } else {
+    __pyx_t_3 = __pyx_t_4;
+    goto __pyx_L10_bool_binop_done;
+  }
+  __pyx_t_4 = ((__pyx_v_g > 30) != 0);
+  if (__pyx_t_4) {
+  } else {
+    __pyx_t_3 = __pyx_t_4;
+    goto __pyx_L10_bool_binop_done;
+  }
+  __pyx_t_4 = ((__pyx_v_b < 20) != 0);
   __pyx_t_3 = __pyx_t_4;
   __pyx_L10_bool_binop_done:;
   if (__pyx_t_3) {
 
     /* "search_image.pyx":20
  *         return True,'Blue'
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  *         return True,'Brown'             # <<<<<<<<<<<<<<
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  *         return True,'Green'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -1721,47 +1732,43 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
     goto __pyx_L0;
 
     /* "search_image.pyx":19
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  *         return True,'Blue'
- *     elif (r < 150 and g < 50 and b < 100):             # <<<<<<<<<<<<<<
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):             # <<<<<<<<<<<<<<
  *         return True,'Brown'
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  */
   }
 
   /* "search_image.pyx":21
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  *         return True,'Brown'
- *     elif (r < 100 and g < 100 and 150 < b < 200):             # <<<<<<<<<<<<<<
+ *     elif (r<60 and g>150 and b<80):             # <<<<<<<<<<<<<<
  *         return True,'Green'
- *     elif (r > 200 and g > 200 and b < 50):
+ *     elif (r>220 and g<50 and b>220):
  */
-  __pyx_t_4 = ((__pyx_v_r < 0x64) != 0);
+  __pyx_t_4 = ((__pyx_v_r < 60) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L13_bool_binop_done;
+    goto __pyx_L15_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g < 0x64) != 0);
+  __pyx_t_4 = ((__pyx_v_g > 0x96) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L13_bool_binop_done;
+    goto __pyx_L15_bool_binop_done;
   }
-  __pyx_t_4 = (0x96 < __pyx_v_b);
-  if (__pyx_t_4) {
-    __pyx_t_4 = (__pyx_v_b < 0xC8);
-  }
-  __pyx_t_5 = (__pyx_t_4 != 0);
-  __pyx_t_3 = __pyx_t_5;
-  __pyx_L13_bool_binop_done:;
+  __pyx_t_4 = ((__pyx_v_b < 80) != 0);
+  __pyx_t_3 = __pyx_t_4;
+  __pyx_L15_bool_binop_done:;
   if (__pyx_t_3) {
 
     /* "search_image.pyx":22
  *         return True,'Brown'
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  *         return True,'Green'             # <<<<<<<<<<<<<<
- *     elif (r > 200 and g > 200 and b < 50):
+ *     elif (r>220 and g<50 and b>220):
  *         return True,'Pink'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -1770,41 +1777,41 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
     goto __pyx_L0;
 
     /* "search_image.pyx":21
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  *         return True,'Brown'
- *     elif (r < 100 and g < 100 and 150 < b < 200):             # <<<<<<<<<<<<<<
+ *     elif (r<60 and g>150 and b<80):             # <<<<<<<<<<<<<<
  *         return True,'Green'
- *     elif (r > 200 and g > 200 and b < 50):
+ *     elif (r>220 and g<50 and b>220):
  */
   }
 
   /* "search_image.pyx":23
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  *         return True,'Green'
- *     elif (r > 200 and g > 200 and b < 50):             # <<<<<<<<<<<<<<
+ *     elif (r>220 and g<50 and b>220):             # <<<<<<<<<<<<<<
  *         return True,'Pink'
  *     else:
  */
-  __pyx_t_5 = ((__pyx_v_r > 0xC8) != 0);
-  if (__pyx_t_5) {
+  __pyx_t_4 = ((__pyx_v_r > 0xDC) != 0);
+  if (__pyx_t_4) {
   } else {
-    __pyx_t_3 = __pyx_t_5;
-    goto __pyx_L16_bool_binop_done;
+    __pyx_t_3 = __pyx_t_4;
+    goto __pyx_L18_bool_binop_done;
   }
-  __pyx_t_5 = ((__pyx_v_g > 0xC8) != 0);
-  if (__pyx_t_5) {
+  __pyx_t_4 = ((__pyx_v_g < 50) != 0);
+  if (__pyx_t_4) {
   } else {
-    __pyx_t_3 = __pyx_t_5;
-    goto __pyx_L16_bool_binop_done;
+    __pyx_t_3 = __pyx_t_4;
+    goto __pyx_L18_bool_binop_done;
   }
-  __pyx_t_5 = ((__pyx_v_b < 50) != 0);
-  __pyx_t_3 = __pyx_t_5;
-  __pyx_L16_bool_binop_done:;
+  __pyx_t_4 = ((__pyx_v_b > 0xDC) != 0);
+  __pyx_t_3 = __pyx_t_4;
+  __pyx_L18_bool_binop_done:;
   if (__pyx_t_3) {
 
     /* "search_image.pyx":24
  *         return True,'Green'
- *     elif (r > 200 and g > 200 and b < 50):
+ *     elif (r>220 and g<50 and b>220):
  *         return True,'Pink'             # <<<<<<<<<<<<<<
  *     else:
  *         return False,'Unknown'
@@ -1815,9 +1822,9 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
     goto __pyx_L0;
 
     /* "search_image.pyx":23
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  *         return True,'Green'
- *     elif (r > 200 and g > 200 and b < 50):             # <<<<<<<<<<<<<<
+ *     elif (r>220 and g<50 and b>220):             # <<<<<<<<<<<<<<
  *         return True,'Pink'
  *     else:
  */
@@ -5501,9 +5508,9 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "search_image.pyx":16
  *     cdef int b = colors[2]
- *     if (r > 200 and g < 50 and b < 50):
+ *     if (r>150 and g<80 and b<80):
  *         return True,'Red'             # <<<<<<<<<<<<<<
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  *         return True,'Blue'
  */
   __pyx_tuple_ = PyTuple_Pack(2, Py_True, __pyx_n_s_Red); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 16, __pyx_L1_error)
@@ -5512,9 +5519,9 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "search_image.pyx":18
  *         return True,'Red'
- *     elif (r < 100 and  100 < g and b < 100):
+ *     elif (r<40 and g<70 and b>150):
  *         return True,'Blue'             # <<<<<<<<<<<<<<
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  *         return True,'Brown'
  */
   __pyx_tuple__2 = PyTuple_Pack(2, Py_True, __pyx_n_s_Blue); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 18, __pyx_L1_error)
@@ -5523,9 +5530,9 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "search_image.pyx":20
  *         return True,'Blue'
- *     elif (r < 150 and g < 50 and b < 100):
+ *     elif (r>70 and r<100 and g<60 and g>30 and b<20):
  *         return True,'Brown'             # <<<<<<<<<<<<<<
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  *         return True,'Green'
  */
   __pyx_tuple__3 = PyTuple_Pack(2, Py_True, __pyx_n_s_Brown); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 20, __pyx_L1_error)
@@ -5534,9 +5541,9 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "search_image.pyx":22
  *         return True,'Brown'
- *     elif (r < 100 and g < 100 and 150 < b < 200):
+ *     elif (r<60 and g>150 and b<80):
  *         return True,'Green'             # <<<<<<<<<<<<<<
- *     elif (r > 200 and g > 200 and b < 50):
+ *     elif (r>220 and g<50 and b>220):
  *         return True,'Pink'
  */
   __pyx_tuple__4 = PyTuple_Pack(2, Py_True, __pyx_n_s_Green); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 22, __pyx_L1_error)
@@ -5545,7 +5552,7 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "search_image.pyx":24
  *         return True,'Green'
- *     elif (r > 200 and g > 200 and b < 50):
+ *     elif (r>220 and g<50 and b>220):
  *         return True,'Pink'             # <<<<<<<<<<<<<<
  *     else:
  *         return False,'Unknown'
