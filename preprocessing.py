@@ -10,16 +10,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import time
 from skimage.color import rgb2gray,rgba2rgb
-from scipy.ndimage import gaussian_filter
-from skimage.filters import gaussian,sobel
 from skimage import data,io
-from skimage import img_as_float
-from skimage.morphology import reconstruction
 from skimage import feature
-from skimage.measure import find_contours, approximate_polygon, subdivide_polygon
+from skimage.measure import find_contours
 from skimage import color
-from webcolors import rgb_to_name
-from skimage import novice
 from search_image import getColor,replaceColor,getSquare,getCenter,getGreen,getBlack
 
 #Read in image, replace colors with black then converts to gray. Allows find edges to work better.

@@ -451,20 +451,20 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) __PYX_ERR(0, 14, __pyx_L1_error)
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_b = __pyx_t_2;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">15</span>:     <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&gt;</span><span class="mf">150</span> <span class="ow">and</span> <span class="n">g</span><span class="o">&lt;</span><span class="mf">80</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&lt;</span><span class="mf">80</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &gt; 0x96) != 0);
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">15</span>:     <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mf">200</span> <span class="ow">and</span> <span class="n">g</span> <span class="o">&lt;</span> <span class="mf">50</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">50</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &gt; 0xC8) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g &lt; 80) != 0);
+  __pyx_t_4 = ((__pyx_v_g &lt; 50) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b &lt; 80) != 0);
+  __pyx_t_4 = ((__pyx_v_b &lt; 50) != 0);
   __pyx_t_3 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_3) {
@@ -479,20 +479,20 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   __pyx_tuple_ = <span class='py_c_api'>PyTuple_Pack</span>(2, Py_True, __pyx_n_s_Red); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 16, __pyx_L1_error)
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple_);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple_);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">17</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">40</span> <span class="ow">and</span> <span class="n">g</span><span class="o">&lt;</span><span class="mf">70</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&gt;</span><span class="mf">150</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &lt; 40) != 0);
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">17</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mf">100</span> <span class="ow">and</span>  <span class="mf">100</span> <span class="o">&lt;</span> <span class="n">g</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">100</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &lt; 0x64) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g &lt; 70) != 0);
+  __pyx_t_4 = ((0x64 &lt; __pyx_v_g) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b &gt; 0x96) != 0);
+  __pyx_t_4 = ((__pyx_v_b &lt; 0x64) != 0);
   __pyx_t_3 = __pyx_t_4;
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_3) {
@@ -507,32 +507,20 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   __pyx_tuple__2 = <span class='py_c_api'>PyTuple_Pack</span>(2, Py_True, __pyx_n_s_Blue); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 18, __pyx_L1_error)
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__2);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__2);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">19</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span><span class="o">&gt;</span><span class="mf">70</span> <span class="ow">and</span> <span class="n">r</span><span class="o">&lt;</span><span class="mf">100</span> <span class="ow">and</span> <span class="n">g</span><span class="o">&lt;</span><span class="mf">60</span> <span class="ow">and</span> <span class="n">g</span><span class="o">&gt;</span><span class="mf">30</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&lt;</span><span class="mf">20</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &gt; 70) != 0);
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">19</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mf">150</span> <span class="ow">and</span> <span class="n">g</span> <span class="o">&lt;</span> <span class="mf">50</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">100</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &lt; 0x96) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L10_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_r &lt; 0x64) != 0);
+  __pyx_t_4 = ((__pyx_v_g &lt; 50) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L10_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g &lt; 60) != 0);
-  if (__pyx_t_4) {
-  } else {
-    __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L10_bool_binop_done;
-  }
-  __pyx_t_4 = ((__pyx_v_g &gt; 30) != 0);
-  if (__pyx_t_4) {
-  } else {
-    __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L10_bool_binop_done;
-  }
-  __pyx_t_4 = ((__pyx_v_b &lt; 20) != 0);
+  __pyx_t_4 = ((__pyx_v_b &lt; 0x64) != 0);
   __pyx_t_3 = __pyx_t_4;
   __pyx_L10_bool_binop_done:;
   if (__pyx_t_3) {
@@ -547,22 +535,26 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   __pyx_tuple__3 = <span class='py_c_api'>PyTuple_Pack</span>(2, Py_True, __pyx_n_s_Brown); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 20, __pyx_L1_error)
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__3);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__3);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">21</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">60</span> <span class="ow">and</span> <span class="n">g</span><span class="o">&gt;</span><span class="mf">150</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&lt;</span><span class="mf">80</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &lt; 60) != 0);
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">21</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mf">100</span> <span class="ow">and</span> <span class="n">g</span> <span class="o">&lt;</span> <span class="mf">100</span> <span class="ow">and</span> <span class="mf">150</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">200</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &lt; 0x64) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L15_bool_binop_done;
+    goto __pyx_L13_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g &gt; 0x96) != 0);
+  __pyx_t_4 = ((__pyx_v_g &lt; 0x64) != 0);
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L15_bool_binop_done;
+    goto __pyx_L13_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b &lt; 80) != 0);
-  __pyx_t_3 = __pyx_t_4;
-  __pyx_L15_bool_binop_done:;
+  __pyx_t_4 = (0x96 &lt; __pyx_v_b);
+  if (__pyx_t_4) {
+    __pyx_t_4 = (__pyx_v_b &lt; 0xC8);
+  }
+  __pyx_t_5 = (__pyx_t_4 != 0);
+  __pyx_t_3 = __pyx_t_5;
+  __pyx_L13_bool_binop_done:;
   if (__pyx_t_3) {
 /* … */
   }
@@ -575,22 +567,22 @@ static PyObject *__pyx_pf_12search_image_getColor(CYTHON_UNUSED PyObject *__pyx_
   __pyx_tuple__4 = <span class='py_c_api'>PyTuple_Pack</span>(2, Py_True, __pyx_n_s_Green); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 22, __pyx_L1_error)
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__4);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__4);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">23</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span><span class="o">&gt;</span><span class="mf">220</span> <span class="ow">and</span> <span class="n">g</span><span class="o">&lt;</span><span class="mf">50</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&gt;</span><span class="mf">220</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_4 = ((__pyx_v_r &gt; 0xDC) != 0);
-  if (__pyx_t_4) {
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">23</span>:     <span class="k">elif</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mf">200</span> <span class="ow">and</span> <span class="n">g</span> <span class="o">&gt;</span> <span class="mf">200</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">50</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_5 = ((__pyx_v_r &gt; 0xC8) != 0);
+  if (__pyx_t_5) {
   } else {
-    __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L18_bool_binop_done;
+    __pyx_t_3 = __pyx_t_5;
+    goto __pyx_L16_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_g &lt; 50) != 0);
-  if (__pyx_t_4) {
+  __pyx_t_5 = ((__pyx_v_g &gt; 0xC8) != 0);
+  if (__pyx_t_5) {
   } else {
-    __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L18_bool_binop_done;
+    __pyx_t_3 = __pyx_t_5;
+    goto __pyx_L16_bool_binop_done;
   }
-  __pyx_t_4 = ((__pyx_v_b &gt; 0xDC) != 0);
-  __pyx_t_3 = __pyx_t_4;
-  __pyx_L18_bool_binop_done:;
+  __pyx_t_5 = ((__pyx_v_b &lt; 50) != 0);
+  __pyx_t_3 = __pyx_t_5;
+  __pyx_L16_bool_binop_done:;
   if (__pyx_t_3) {
 /* … */
   }

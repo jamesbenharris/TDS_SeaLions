@@ -12,15 +12,15 @@ def getColor(np.ndarray colors):
     cdef int r = colors[0]
     cdef int g = colors[1]
     cdef int b = colors[2]
-    if (r>150 and g<80 and b<80):
+    if (r > 200 and g < 50 and b < 50):
         return True,'Red'
-    elif (r<40 and g<70 and b>150):
+    elif (r < 100 and  100 < g and b < 100):
         return True,'Blue'
-    elif (r>70 and r<100 and g<60 and g>30 and b<20):
+    elif (r < 150 and g < 50 and b < 100):
         return True,'Brown'
-    elif (r<60 and g>150 and b<80):
+    elif (r < 100 and g < 100 and 150 < b < 200):
         return True,'Green'    
-    elif (r>220 and g<50 and b>220):
+    elif (r > 200 and g > 200 and b < 50):
         return True,'Pink'
     else:
         return False,'Unknown'
