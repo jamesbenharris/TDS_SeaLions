@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import time
 import pandas as pd
+import os
 from skimage.color import rgb2gray,rgba2rgb
 from skimage import data,io
 from skimage import feature
@@ -26,7 +27,7 @@ def processImg(img):
     gray = rgb2gray(orig2)
     #Find Edges
     start_time = time.time()
-    edges3 = feature.canny(gray, sigma=4,low_threshold=.1,high_threshold=.15)
+    edges3 = feature.canny(gray, sigma=3,low_threshold=.1,high_threshold=.15)
     print("--- Found edges in %s seconds ---" % (time.time() - start_time))
     #edges3 = roberts(image)
     #io.imshow(edges3)
@@ -37,6 +38,36 @@ def processImg(img):
     contours = find_contours(edges3, .5, fully_connected='high', positive_orientation='low')
     print("--- Found contours in %s seconds ---" % (time.time() - start_time))
     return contours,orig,orig2,edges3
+
+def getImageList(directory):
+    return os.listdir(directory)
+
+def getTrainingList(directory):
+    start_time = time.time()
+    images = []
+    i = 0
+    count = 0
+    f = 0
+    #Filter contours by color and shape. Plot Image with squares
+    for file in getImageList(directory):
+        if file.endswith(".jpg"): 
+            contours,orig,orig2,edges3 = processImg(os.path.join(directory, file));
+            for n, contour in enumerate(contours):
+                x_c,y_c = getCenter(contour)
+                boolean = getBool(orig2[y_c,x_c])
+                truth,cl,scale = getColor(orig[y_c,x_c])
+                x,y,w,h = getSquare(contour,scale)
+                i = (file,y,x,y+h,x+w,cl)
+                #ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
+                if(boolean and abs(w-h)<5 and i != f):
+                    images.append(i)
+                    f = (file,y,x,y+h,x+w,cl)
+            print(count)
+            count+=1
+            
+    df = pd.DataFrame(images,columns=['image', 'x1', 'y1', 'x2', 'y2', 'class'])
+    print("--- Extracted Sea Lions in %s seconds ---" % (time.time() - start_time))
+    return df.drop_duplicates()
 
 def extractSeaLions(contours,orig,orig2):
     start_time = time.time()
@@ -51,7 +82,7 @@ def extractSeaLions(contours,orig,orig2):
         x,y,w,h = getSquare(contour,scale)
         i = (y,y+h,x,x+w)
         #ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
-        if(boolean and abs(w-h)<10 and i != f):
+        if(boolean and abs(w-h)<5 and i != f):
             crop = orig[y:y+h,x:x+w]
             row = [crop,cl]
             df.append(row)

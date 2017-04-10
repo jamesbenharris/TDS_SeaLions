@@ -8,18 +8,13 @@ Created on Tue Apr  4 00:47:51 2017d
 
 from preprocessing import *
 
-results,image,image_cleaned,edges  = processImg('/Users/benharris/Documents/Projects/SeaLions/images/0.jpg')
+#results,image,image_cleaned,edges  = processImg('/Users/benharris/Documents/Projects/SeaLions/images/1.jpg')
 
-findSeaLions(results,image,image_cleaned)
+#findSeaLions(results,image,image_cleaned)
+    
+ls = getTrainingList("/Volumes/Research/SeaLions/Kaggle-NOAA-SeaLions/TrainDotted")
 
-images = extractSeaLions(results,image,image_cleaned)
+ls.to_csv("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN.csv", sep=',')
 
-io.imshow(edges)
-io.show()
-        
-for img in images[:]:
-    if len(img[0])>0 and img[1]==4:
-        io.imshow(img[0])
-        io.show()
-        break
+#images = extractSeaLions(results,image,image_cleaned)
 
