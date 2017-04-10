@@ -12,9 +12,11 @@ from preprocessing import *
 
 #findSeaLions(results,image,image_cleaned)
     
-ls = getTrainingList("/Volumes/Research/SeaLions/Kaggle-NOAA-SeaLions/TrainDotted")
+#ls = getTrainingList("/Volumes/Research/SeaLions/Kaggle-NOAA-SeaLions/TrainDotted")
 
-ls.to_csv("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN.csv", sep=',')
+#ls.to_csv("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN.csv", sep=',')
 
 #images = extractSeaLions(results,image,image_cleaned)
 
+cleaned = cleanCSV("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN.csv","/Users/benharris/Documents/Projects/SeaLions/TrainSmall/Train/train.csv")
+cleaned.to_csv("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN-Cleaned.csv", sep=',')

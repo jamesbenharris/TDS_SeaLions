@@ -119,3 +119,22 @@ def findSeaLions(contours,orig,orig2):
     ax.set_yticks([])
     print("--- Found Sea Lions in %s seconds ---" % (time.time() - start_time))
 
+def cleanCSV(result,train):
+    found_sealions = pd.read_csv(result)
+    actual_sealions = pd.read_csv(train).drop([])
+    columns = ["id",0,1,2,3,4]
+    actual_sealions.columns = columns
+    
+    for index, row in actual_sealions.iterrows():
+        for column in columns:
+            if column != 'id' and row[column] == 0:
+                img = str(row["id"])+".jpg"
+                boolean = found_sealions[(found_sealions["image"] == img) & (found_sealions["class"] == column)].index
+                found_sealions = found_sealions.drop(boolean)               
+    return found_sealions.drop('Unnamed: 0', axis =1)
+        
+    
+    
+    
+    
+    
