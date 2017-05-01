@@ -8,6 +8,7 @@ Created on Mon Apr 24 15:39:02 2017
 
 import numpy as np
 import pandas as pd
+import h5py
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
@@ -19,7 +20,7 @@ from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
 from keras import backend as K
 from keras.datasets import cifar10
-from skimage import io
+from skimage import io,transform
 K.set_image_dim_ordering('th')
 
 seed = 7
@@ -47,7 +48,9 @@ X_test = []
 y_train = []
 y_test = []
 
+IMG_SIZE = 100
 #Step 6: split sea lions into training ans test sets
+i=0
 for image in d_images:
     #Create a list of unique Sea Lions in image
     i_images = images[images['image']==image]
@@ -55,31 +58,34 @@ for image in d_images:
     img = io.imread(image)
     #Loop through sea lions
     for index,row in i_images.iterrows():
-        #Extract each column for clear understanding. Unnecessary.
-        x1 = row['x1']
-        x2 = row['x2']
-        y1 = row['y1']
-        y2 = row['y2']
-        cl = row['class']
-        #Crop Image
-        crop = img[x1:x2,y1:y2].reshape(3,x2-x1,y2-y1)
-        #Split Train and Test Sets
-        if (index <= c_train):
-            X_train.append(crop)
-            y_train.append(cl)
-        else:
-            X_test.append(crop)
-            y_test.append(cl)
+        try:
+            #Extract each column for clear understanding. Unnecessary.
+            x1 = row['x1']
+            x2 = row['x2']
+            y1 = row['y1']
+            y2 = row['y2']
+            cl = row['class']
+            #Crop Image
+            crop = img[x1:x2,y1:y2]
+            crop = transform.resize(crop, (IMG_SIZE, IMG_SIZE))
+            crop = np.rollaxis(crop,-1)
+            #Split Train and Test Sets
+            #print(i)
+            if (index <= c_train):
+                X_train.append(crop)
+                y_train.append(cl)
+            else:
+                X_test.append(crop)
+                y_test.append(cl)
+            i+=1
+            print(i)
+        except:
+            i+=1
             
-#Step 7: Get number of classes
-
-
 #Step 7: Normalize Data
-#X_train = pd.DataFrame(X_train)
-#X_test = pd.DataFrame(X_test)
-(X_train, y_train), (X_test, y_test) = cifar10.load_data()
-X_train = X_train.astype('float32')
-X_test = X_test.astype('float32')
+
+X_train = np.array(X_train, dtype='float32')
+X_test = np.array(X_test, dtype='float32')
 X_train = X_train / 255.0
 X_test = X_test / 255.0
 y_train = np_utils.to_categorical(y_train)
@@ -88,13 +94,24 @@ num_classes = y_test.shape[1]
 
 #Step 8: Create the model
 model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=(3, 32, 32), padding='same', activation='relu', kernel_constraint=maxnorm(3)))
+model.add(Conv2D(32, (3, 3), input_shape=(3, IMG_SIZE, IMG_SIZE), padding='same', activation='relu'))
 model.add(Dropout(0.2))
-model.add(Conv2D(32, (3, 3), activation='relu', padding='same', kernel_constraint=maxnorm(3)))
+model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+model.add(Dropout(0.2))
+model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
+model.add(Dropout(0.2))
+model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
+model.add(Dropout(0.2))
+model.add(Dense(1024, activation='relu', kernel_constraint=maxnorm(3)))
+model.add(Dropout(0.2))
 model.add(Dense(512, activation='relu', kernel_constraint=maxnorm(3)))
-model.add(Dropout(0.5))
+model.add(Dropout(0.2))
 model.add(Dense(num_classes, activation='softmax'))
 
 #Step 9: Compile model
