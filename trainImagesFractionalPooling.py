@@ -27,7 +27,7 @@ seed = 7
 np.random.seed(seed)
 
 #Step 1: Load Sea Lions
-h5f = h5py.File('/Users/benharris/Documents/Projects/SeaLions.h5','r')
+h5f = h5py.File('/Users/benharris/Documents/Projects/sl/SeaLions.h5','r')
 X_train = h5f['X_train'][:]*255.0
 y_train = h5f['y_train'][:]
 X_test = h5f['X_test'][:]*255.0
@@ -36,26 +36,19 @@ h5f.close()
 
 reduct = 1.414
 num_classes = y_test.shape[1]
+
 #Step 2: Create the model
 model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=(3, 100, 100), padding='same', activation='relu'))
-model.add(Dropout(0.2))
-model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-model.add(Dropout(0.2))
-model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
-model.add(Dropout(0.2))
-model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(10, (10, 10), input_shape=(3, 100, 100), padding='same', activation='relu'))
+model.add(FractionalMaxPooling2D(pool_size=(reduct, reduct)))
+model.add(Conv2D(20, (6, 6), activation='relu', padding='same'))
+model.add(FractionalMaxPooling2D(pool_size=(reduct, reduct)))
+model.add(Dropout(0.25))
+model.add(Conv2D(30, (3, 3), activation='relu', padding='same'))
+model.add(FractionalMaxPooling2D(pool_size=(reduct, reduct)))
+model.add(Dropout(0.5))
+model.add(Conv2D(40, (1, 1), activation='relu', padding='same'))
 model.add(Flatten())
-model.add(Dropout(0.2))
-model.add(Dense(1024, activation='relu', kernel_constraint=maxnorm(3)))
-model.add(Dropout(0.2))
-model.add(Dense(512, activation='relu', kernel_constraint=maxnorm(3)))
-model.add(Dropout(0.2))
 model.add(Dense(num_classes, activation='softmax'))
 
 #Step 3: Compile model
