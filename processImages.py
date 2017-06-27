@@ -8,9 +8,12 @@ Created on Tue Apr  4 00:47:51 2017d
 
 from preprocessing import *
 
-#results,image,image_cleaned,edges  = processImg('/Users/benharris/Documents/Projects/SeaLions/images/1.jpg')
+results,image,image_cleaned,edges  = processImg('/Users/benharris/Documents/Projects/SeaLions/images/1.jpg')
 
-#findSeaLions(results,image,image_cleaned)
+io.imshow(edges)
+io.show()
+
+findSeaLions(results,image,image_cleaned)
     
 #ls = getTrainingList("/Volumes/Research/SeaLions/Kaggle-NOAA-SeaLions/TrainDotted")
 
@@ -18,5 +21,5 @@ from preprocessing import *
 
 #images = extractSeaLions(results,image,image_cleaned)
 
-cleaned = cleanCSV("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN.csv","/Users/benharris/Documents/Projects/SeaLions/TrainSmall/Train/train.csv")
-cleaned.to_csv("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN-Cleaned.csv", sep=',')
+#cleaned = cleanCSV("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN.csv","/Users/benharris/Documents/Projects/SeaLions/TrainSmall/Train/train.csv")
+#cleaned.to_csv("/Users/benharris/Documents/Projects/SeaLions/Results/SeaLions-R-CNN-Cleaned.csv", sep=',')

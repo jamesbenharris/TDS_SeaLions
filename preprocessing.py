@@ -32,7 +32,6 @@ def processImg(img):
     #edges3 = roberts(image)
     #io.imshow(edges3)
     #io.show()
-    
     #Find Contours
     start_time = time.time()
     contours = find_contours(edges3, .5, fully_connected='high', positive_orientation='low')
